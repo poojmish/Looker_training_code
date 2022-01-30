@@ -1,6 +1,5 @@
 view: dialogflow_cleaned_logs {
-  sql_table_name: `looker_training.dialogflow_cleaned_logs`
-    ;;
+  sql_table_name: `looker_training.dialogflow_cleaned_logs`;;
 
   dimension: action {
     type: string
@@ -70,6 +69,8 @@ view: dialogflow_cleaned_logs {
   dimension: response_id {
     type: string
     sql: ${TABLE}.response_ID ;;
+    primary_key: yes
+
   }
 
   dimension: sentiment_score {

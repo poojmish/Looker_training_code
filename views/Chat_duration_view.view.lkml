@@ -30,9 +30,13 @@ view: Chat_duration_view  {
     ON entry_intent.session_ID=conv_length.session_ID
     ;;
   }
+  dimension: response_id {
+    type: string
+    sql: ${TABLE}.response_ID ;;
+    primary_key: yes
 
-
-  dimension: session_ID {
+  }
+ dimension: session_ID {
     description: "Session ID"
     type: string
     sql: ${TABLE}.session_ID ;;
@@ -94,7 +98,3 @@ view: Chat_duration_view  {
     sql: (${sumduration}/${sessioncount}) ;;
     value_format: "mm:ss"
   }}
-
-
-
-
