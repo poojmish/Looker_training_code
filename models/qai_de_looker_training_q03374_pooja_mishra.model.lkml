@@ -11,3 +11,4 @@ datagroup: qai_de_looker_training_q03374_pooja_mishra_default_datagroup {
 persist_with: qai_de_looker_training_q03374_pooja_mishra_default_datagroup
 
 explore: dialogflow_cleaned_logs {}
+explore: Chat_duration_view {}

@@ -104,6 +104,17 @@ view: dialogflow_cleaned_logs {
     sql: ${Total_Queries}/${Total_Sessions} ;;
     value_format: "0"
   }
+  measure: Handled_queries{
+    type: count_distinct
+    sql: case when ${is_fallback}= True then ${response_id} end ;;
+
+  }
+  measure: Unhandled_queries{
+    type: count_distinct
+    sql: case when ${is_fallback}= False then ${response_id} end ;;
+
+  }
+
 
 
   dimension_group: time {
