@@ -114,6 +114,22 @@ view: dialogflow_cleaned_logs {
     sql: case when ${is_fallback}= False then ${response_id} end ;;
 
   }
+  dimension: Busiest_hours {
+  type: number
+  sql: case when extract(hour from ${time_date}) in (00,01) then "12am-2am"
+ when extract(hour from ${time_date})
+ in (02,03) then "2am-4am" when extract(hour from ${time_date}) in (04,05) then "4am-6am"
+ when extract(hour from ${time_date}) in (06,07) then "6am-8am"
+ when extract(hour from ${time_date}) in (08,09) then "8am-10am"
+ when extract(hour from ${time_date}) in (10,11) then "10am-12pm"
+ when extract(hour from ${time_date}) in (12,13) then "12pm-2pm"
+ when extract(hour from ${time_date}) in (14,15) then "2pm-4pm"
+ when extract(hour from ${time_date}) in (16,17) then "4pm-6pm"
+ when extract(hour from ${time_date}) in (18,19) then "6pm-8pm"
+ when extract(hour from ${time_date}) in (20,21) then "8pm-10pm"
+ when extract(hour from ${time_date}) in (22,23) then "10pm-12am" end ;;
+
+  }
 
 
 
