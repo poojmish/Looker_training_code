@@ -117,7 +117,7 @@ view: dialogflow_cleaned_logs {
 
   dimension_group: date_time {
     type: time
-    sql: date_timeframes: [
+    sql: date_timeframes [
       raw,
       date_time,
       date,
@@ -131,7 +131,7 @@ view: dialogflow_cleaned_logs {
 
   dimension_group: date_time_stamp {
     type: time
-    sql: date_time_frames: [
+    sql: date_time_frames [
       raw,
       date_time,
       date,
