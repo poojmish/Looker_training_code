@@ -8,7 +8,7 @@ view: dialogflow_cleaned_logs {
 
   dimension_group: date {
     type: time
-    sql: date_timeframes: [
+    sql: timeframes: [
       raw,
       date,
       week,
@@ -73,9 +73,9 @@ view: dialogflow_cleaned_logs {
 
   }
 
-  dimension: sendate_timent_score {
+  dimension: sentiment_score {
     type: number
-    sql: ${TABLE}.sendate_timent_score ;;
+    sql: ${TABLE}.sentiment_score ;;
   }
 
   dimension: session_id {
@@ -115,47 +115,47 @@ view: dialogflow_cleaned_logs {
 
   }
 
-  dimension_group: date_time {
+  dimension_group: time {
     type: time
-    sql: date_timeframes [
+     timeframes : [
       raw,
-      date_time,
+      time,
       date,
       week,
       month,
       quarter,
       year
     ]
-    sql: ${TABLE}.date_time ;;
+    sql: ${TABLE}.time ;;
   }
 
-  dimension_group: date_time_stamp {
+  dimension_group: time_stamp {
     type: time
-    sql: date_time_frames [
+    timeframes : [
       raw,
-      date_time,
+      time,
       date,
       week,
       month,
       quarter,
       year
     ]
-    sql: ${TABLE}.date_time_stamp ;;
+    sql: ${TABLE}.time_stamp ;;
   }
   dimension: Busiest_hours {
     type: date_time
-    sql: (case when ${date_time_hour} in (00,01) then "12am-2am"
-       when ${date_time_hour} in (02,03) then "2am-4am"
-       when ${date_time_hour} in (04,05) then "4am-6am"
-       when ${date_time_hour} in (06,07) then "6am-8am"
-       when ${date_time_hour} in (08,09) then "8am-10am"
-       when ${date_time_hour} in (10,11) then "10am-12pm"
-       when ${date_time_hour} in (12,13) then "12pm-2pm"
-       when ${date_time_hour} in (14,15) then "2pm-4pm"
-       when ${date_time_hour} in (16,17) then "4pm-6pm"
-       when ${date_time_hour} in (18,19) then "6pm-8pm"
-       when ${date_time_hour} in (20,21) then "8pm-10pm"
-       when ${date_time_hour} in (22,23) then "10pm-12am" end) ;;
+    sql: (case when ${date_hour} in (00,01) then "12am-2am"
+       when ${date_hour} in (02,03) then "2am-4am"
+       when ${date_hour} in (04,05) then "4am-6am"
+       when ${date_hour} in (06,07) then "6am-8am"
+       when ${date_hour} in (08,09) then "8am-10am"
+       when ${date_hour} in (10,11) then "10am-12pm"
+       when ${date_hour} in (12,13) then "12pm-2pm"
+       when ${date_hour} in (14,15) then "2pm-4pm"
+       when ${date_hour} in (16,17) then "4pm-6pm"
+       when ${date_hour} in (18,19) then "6pm-8pm"
+       when ${date_hour} in (20,21) then "8pm-10pm"
+       when ${date_hour} in (22,23) then "10pm-12am" end) ;;
 
     }
 
