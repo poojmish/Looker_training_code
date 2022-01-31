@@ -8,7 +8,7 @@ view: dialogflow_cleaned_logs {
 
   dimension_group: date {
     type: time
-    timeframes: [
+    sql: date_timeframes: [
       raw,
       date,
       week,
@@ -73,9 +73,9 @@ view: dialogflow_cleaned_logs {
 
   }
 
-  dimension: sentiment_score {
+  dimension: sendate_timent_score {
     type: number
-    sql: ${TABLE}.sentiment_score ;;
+    sql: ${TABLE}.sendate_timent_score ;;
   }
 
   dimension: session_id {
@@ -114,52 +114,50 @@ view: dialogflow_cleaned_logs {
     sql: case when ${is_fallback}= False then ${response_id} end ;;
 
   }
+
+  dimension_group: date_time {
+    type: time
+    sql: date_timeframes: [
+      raw,
+      date_time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.date_time ;;
+  }
+
+  dimension_group: date_time_stamp {
+    type: time
+    sql: date_timeframes: [
+      raw,
+      date_time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.date_time_stamp ;;
+  }
   dimension: Busiest_hours {
-  type: number
-  sql: case when extract(hour from ${time_date}) in (00,01) then "12am-2am"
- when extract(hour from ${time_date})
- in (02,03) then "2am-4am" when extract(hour from ${time_date}) in (04,05) then "4am-6am"
- when extract(hour from ${time_date}) in (06,07) then "6am-8am"
- when extract(hour from ${time_date}) in (08,09) then "8am-10am"
- when extract(hour from ${time_date}) in (10,11) then "10am-12pm"
- when extract(hour from ${time_date}) in (12,13) then "12pm-2pm"
- when extract(hour from ${time_date}) in (14,15) then "2pm-4pm"
- when extract(hour from ${time_date}) in (16,17) then "4pm-6pm"
- when extract(hour from ${time_date}) in (18,19) then "6pm-8pm"
- when extract(hour from ${time_date}) in (20,21) then "8pm-10pm"
- when extract(hour from ${time_date}) in (22,23) then "10pm-12am" end ;;
+    type: date_time
+    sql: case when extract(hour from ${date_time}  ) in (00,01) then "12am-2am"
+       when extract(hour from ${date_time}) in (02,03) then "2am-4am"
+       when extract(hour from ${date_time}) in (04,05) then "4am-6am"
+       when extract(hour from ${date_time}) in (06,07) then "6am-8am"
+       when extract(hour from ${date_time}) in (08,09) then "8am-10am"
+       when extract(hour from ${date_time}) in (10,11) then "10am-12pm"
+       when extract(hour from ${date_time}) in (12,13) then "12pm-2pm"
+       when extract(hour from ${date_time}) in (14,15) then "2pm-4pm"
+       when extract(hour from ${date_time}) in (16,17) then "4pm-6pm"
+       when extract(hour from ${date_time}) in (18,19) then "6pm-8pm"
+       when extract(hour from ${date_time}) in (20,21) then "8pm-10pm"
+       when extract(hour from ${date_time}) in (22,23) then "10pm-12am" end ;;
 
-  }
-
-
-
-  dimension_group: time {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.time ;;
-  }
-
-  dimension_group: time_stamp {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.time_stamp ;;
-  }
+    }
 
   dimension: week_number {
     type: number
