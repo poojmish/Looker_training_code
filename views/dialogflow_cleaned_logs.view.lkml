@@ -143,7 +143,7 @@ view: dialogflow_cleaned_logs {
     sql: ${TABLE}.date_time_stamp ;;
   }
   dimension: Busiest_hours {
-    type: date
+    type: date_time
     sql: case when extract(hour from ${date_time}) in (00,01) then "12am-2am"
        when extract(hour from ${date_time}) in (02,03) then "2am-4am"
        when extract(hour from ${date_time}) in (04,05) then "4am-6am"
