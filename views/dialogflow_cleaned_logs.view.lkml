@@ -142,22 +142,6 @@ view: dialogflow_cleaned_logs {
     ]
     sql: ${TABLE}.time_stamp ;;
   }
-  dimension: Busiest_hours {
-    type: date_time
-    sql: (case when ${date_time} in (00,01) then "12am-2am"
-       when ${date_time} in (02,03) then "2am-4am"
-       when ${date_time} in (04,05) then "4am-6am"
-       when ${date_time} in (06,07) then "6am-8am"
-       when ${date_time} in (08,09) then "8am-10am"
-       when ${date_time} in (10,11) then "10am-12pm"
-       when ${date_time} in (12,13) then "12pm-2pm"
-       when ${date_time} in (14,15) then "2pm-4pm"
-       when ${date_time} in (16,17) then "4pm-6pm"
-       when ${date_time} in (18,19) then "6pm-8pm"
-       when ${date_time} in (20,21) then "8pm-10pm"
-       when ${date_time} in (22,23) then "10pm-12am" end) ;;
-
-    }
 
   dimension: week_number {
     type: number
