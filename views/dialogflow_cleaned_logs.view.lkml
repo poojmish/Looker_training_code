@@ -88,7 +88,7 @@ view: dialogflow_cleaned_logs {
   }
   measure: Date_count {
     type: count_distinct
-    sql: ${date_date} ;;
+    sql: ${time_stamp_date} ;;
   }
   measure: Avg_sessions_day {
     type: number
@@ -106,14 +106,27 @@ view: dialogflow_cleaned_logs {
   }
   measure: Handled_queries{
     type: count_distinct
-    sql: case when ${is_fallback}= True then ${response_id} end ;;
+    sql: case when ${is_fallback}= False then ${response_id} end ;;
 
   }
   measure: Unhandled_queries{
     type: count_distinct
-    sql: case when ${is_fallback}= False then ${response_id} end ;;
+    sql: case when ${is_fallback}= True then ${response_id} end ;;
 
   }
+  measure: success_rate {
+    type: number
+    sql: sum(if(${is_fallback},0,1))/${count} ;;
+  }
+  measure: average_sentiment_score {
+    type: average
+    sql: ${sentiment_score};;
+  }
+  measure: average_intent_detection_confidence {
+    type: average
+    sql: ${intent_detection_confidence};;
+  }
+
 
   dimension_group: time {
     type: time

@@ -76,11 +76,7 @@ view: Chat_duration_view  {
     type: string
     sql: ${TABLE}.platform ;;
   }
-  dimension: avg_sentiment_score {
-    description: "Average Sentiment Score"
-    type: number
-    sql: ${TABLE}.avg_sentiment_score ;;
-  }
+
   measure: count {
     type: count
     drill_fields: []
