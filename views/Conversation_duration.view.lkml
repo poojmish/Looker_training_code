@@ -1,4 +1,4 @@
-view: Conversation_duration_view {
+view: Conversation_duration {
   derived_table: {
     sql:
       Select session_id, sentiment_score,
