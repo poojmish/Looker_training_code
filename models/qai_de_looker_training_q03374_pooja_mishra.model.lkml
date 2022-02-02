@@ -19,7 +19,7 @@ explore: dialogflow_cleaned_logs {
   join: Conversation_duration {
     type: full_outer
     relationship: one_to_many
-    sql_on: dialogflow_cleaned_logs.session_id = conversation_length.session_id ;;
+    sql_on: dialogflow_cleaned_logs.session_id = Conversation_duration.session_id ;;
     fields: [call_duration_bucket, session_id]
   }
 }
@@ -40,7 +40,7 @@ explore: session_level {
   join: Conversation_duration {
     type: left_outer
     relationship: one_to_one
-    sql_on: session_level.session_id = conversation_length.session_id ;;
+    sql_on: session_level.session_id = Conversation_duration.session_id ;;
     fields: [avg_session_duration,hour_frame]
   }
   }
