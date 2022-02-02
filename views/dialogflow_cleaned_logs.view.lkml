@@ -117,10 +117,12 @@ view: dialogflow_cleaned_logs {
   measure: success_rate {
     type: number
     sql: sum(if(${is_fallback},0,1))/${count} ;;
+    value_format: "#%;(#%)"
   }
   measure: average_sentiment_score {
     type: average
     sql: ${sentiment_score};;
+    value_format: "#.000;(#.000)"
   }
   measure: average_intent_detection_confidence {
     type: average
