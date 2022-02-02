@@ -10,6 +10,7 @@ view: second_last_intent {
 
   dimension: session_id {
     type: string
+    primary_key: yes
   }
 
   dimension: second_last_intent {
