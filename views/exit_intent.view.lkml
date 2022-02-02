@@ -10,6 +10,7 @@ view: exit_intent {
 
   dimension: session_id {
     type: string
+    primary_key: yes
   }
 
   dimension: exit_intent {
