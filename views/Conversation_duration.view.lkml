@@ -19,8 +19,8 @@ view: Conversation_duration {
   dimension_group: conversation_duration {
     type: duration
     intervals: [second, minute]
-    sql_start: conversation_length.start_time ;;
-    sql_end: conversation_length.end_time ;;
+    sql_start: Conversation_duration.start_time ;;
+    sql_end: Conversation_duration.end_time ;;
   }
 
   dimension: count_of_msg {
