@@ -1,7 +1,11 @@
 connection: "qai_de_looker_training_q03374_pooja_mishra"
 
 # include all the views
-include: "/views/**/*.view"
+include: "/views/**/dialogflow_cleaned_logs.view"
+include: "/views/**/session_level.view"
+include: "/views/**/exit_intent.view"
+include: "/views/**/second_last_intent.view"
+include: "/views/**/Conversation_duration_view.view"
 
 datagroup: qai_de_looker_training_q03374_pooja_mishra_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
