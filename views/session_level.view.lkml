@@ -9,6 +9,7 @@ view: session_level {
   }
   dimension: session_id {
     type: string
+    primary_key: yes
   }
 
   dimension: entry_intent {
