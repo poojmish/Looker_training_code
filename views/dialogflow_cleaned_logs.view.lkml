@@ -77,6 +77,14 @@ view: dialogflow_cleaned_logs {
     type: number
     sql: ${TABLE}.sentiment_score ;;
   }
+  dimension: sentiment_bucket {
+    type: string
+    sql: CASE WHEN magnitude > 3 and sentiment_score between 0.25 and 1 THEN '1. Positive'
+          WHEN magnitude <= 3 and sentiment_score between 0.25 and 1 THEN '2. Partially Positive'
+          WHEN magnitude <= 3 and sentiment_score between -1 and -0.25 THEN '4. Partially Negative'
+          WHEN magnitude > 3 and sentiment_score between -1 and -0.25 THEN '5. Negative'
+          ELSE "3. Neutral" END ;;
+  }
 
   dimension: session_id {
     type: string
