@@ -20,7 +20,7 @@ explore: dialogflow_cleaned_logs {
     type: full_outer
     relationship: one_to_many
     sql_on: dialogflow_cleaned_logs.session_id = conversation_length.session_id ;;
-    fields: [call_duration_bucket, session_id]
+    fields: []
   }
 }
 
@@ -29,18 +29,18 @@ explore: session_level {
     type: left_outer
     relationship: one_to_one
     sql_on: session_level.session_id = exit_intent.session_id ;;
-    # fields: [exit_intent]
+    fields: [exit_intent]
   }
   join: second_last_intent {
     type: left_outer
     relationship: one_to_one
     sql_on: session_level.session_id = second_last_intent.session_id ;;
-    # fields: [second_last_intent]
+    fields: [second_last_intent]
   }
   join: Conversation_duration {
     type: left_outer
     relationship: one_to_one
     sql_on: session_level.session_id = conversation_length.session_id ;;
-    # fields: []
+    fields: []
   }
   }
