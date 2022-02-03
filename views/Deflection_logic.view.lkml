@@ -24,7 +24,7 @@ view: Deflection_logic {
     type: number
   }
 
-  dimension: deflection_bucket {
+  dimension: Deflection {
     case: {
       when: {
         sql: ${fallback_case} = 0 and ${agent_case} = 0 ;;
@@ -46,18 +46,18 @@ view: Deflection_logic {
     }
   }
 
-  dimension: deflection_rate {
+  dimension: Deflection_rate {
     case: {
       when: {
-        sql: ${deflection_bucket} = "Sessions successfully handled by Bot" or ${deflection_bucket} = "Sessions partially handled by the bot but not transferred to live agent";;
+        sql: ${Deflection} = "Sessions successfully handled by Bot" or ${Deflection} = "Sessions partially handled by the bot but not transferred to live agent";;
         label: "Fully Deflected"
       }
       when: {
-        sql: ${deflection_bucket} = "Sessions partially handled by the bot but transferred to live agent";;
+        sql: ${Deflection} = "Sessions partially handled by the bot but transferred to live agent";;
         label: "Partially Deflected"
       }
       when: {
-        sql: ${deflection_bucket} = "Sessions transferred to Live Agent as per the flow" ;;
+        sql: ${Deflection} = "Sessions transferred to Live Agent as per the flow" ;;
         label: "Not Deflected"
       }
     }
