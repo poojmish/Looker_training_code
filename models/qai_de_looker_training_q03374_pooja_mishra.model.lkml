@@ -6,6 +6,7 @@ include: "/views/**/session_level.view"
 include: "/views/**/exit_intent.view"
 include: "/views/**/second_last_intent.view"
 include: "/views/**/Conversation_duration.view"
+include: "/views/**/Deflection_logic.view"
 
 datagroup: qai_de_looker_training_q03374_pooja_mishra_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
@@ -42,5 +43,11 @@ explore: session_level {
     relationship: one_to_one
     sql_on: session_level.session_id = Conversation_duration.session_id ;;
     fields: [avg_session_duration,hour_frame]
+  }
+  join: Deflection_logic {
+    type: left_outer
+    relationship: one_to_one
+    sql_on: session_level.session_id = deflection.session_id ;;
+    fields: [Deflection,Deflection_rate]
   }
   }
