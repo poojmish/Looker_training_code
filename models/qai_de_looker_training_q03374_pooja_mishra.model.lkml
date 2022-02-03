@@ -47,7 +47,7 @@ explore: session_level {
   join: Deflection_logic {
     type: left_outer
     relationship: one_to_one
-    sql_on: session_level.session_id = deflection.session_id ;;
+    sql_on: session_level.session_id = Deflection_logic.session_id ;;
     fields: [Deflection,Deflection_rate]
   }
   }
