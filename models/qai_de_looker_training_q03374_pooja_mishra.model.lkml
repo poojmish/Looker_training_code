@@ -7,6 +7,7 @@ include: "/views/**/exit_intent.view"
 include: "/views/**/second_last_intent.view"
 include: "/views/**/Conversation_duration.view"
 include: "/views/**/Deflection_logic.view"
+include: "/views/**/intent_correlation.view"
 
 datagroup: qai_de_looker_training_q03374_pooja_mishra_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
@@ -23,7 +24,13 @@ explore: dialogflow_cleaned_logs {
     sql_on: dialogflow_cleaned_logs.session_id = Conversation_duration.session_id ;;
     fields: [call_duration_bucket, session_id]
   }
+  join: intent_correlation {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: dialogflow_cleaned_logs.response_id = intent_correlation.response_id ;;
+  }
 }
+
 
 explore: session_level {
   join: exit_intent {
