@@ -19,5 +19,6 @@ view: session_level {
   measure: total_sessions {
     type: count
     drill_fields: []
+
   }
 }
