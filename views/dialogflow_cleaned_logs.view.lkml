@@ -126,7 +126,8 @@ view: dialogflow_cleaned_logs {
   }
   measure: success_rate {
     type: number
-    sql: sum(if(${is_fallback},0,1))/${count} ;;
+    sql: sum(if(${is_fallback},0,1))/${count}
+        if(${count} > 0, sum(if(${is_fallback},0,1))/${count}, 0);;
     value_format: "#%;(#%)"
   }
   measure: average_sentiment_score {
