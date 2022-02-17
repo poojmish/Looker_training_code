@@ -100,8 +100,7 @@ view: dialogflow_cleaned_logs {
   }
   measure: Avg_sessions_day {
     type: number
-    sql: ${Total_Sessions}/${Date_count}
-        if(${Date_count} > 0, ${Total_Sessions}/${Date_count}, 0) ;;
+    sql: if(${Date_count} > 0, ${Total_Sessions}/${Date_count}, 0) ;;
     value_format: "0"
 
   }
@@ -126,8 +125,7 @@ view: dialogflow_cleaned_logs {
   }
   measure: success_rate {
     type: number
-    sql: sum(if(${is_fallback},0,1))/${count}
-        if(${count} > 0, sum(if(${is_fallback},0,1))/${count}, 0);;
+    sql: if(${count} > 0, sum(if(${is_fallback},0,1))/${count}, 0);;
     value_format: "#%;(#%)"
   }
   measure: average_sentiment_score {
