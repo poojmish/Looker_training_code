@@ -102,6 +102,7 @@ view: dialogflow_cleaned_logs {
     type: number
     sql: ${Total_Sessions}/${Date_count} ;;
     value_format: "0"
+
   }
   measure: Total_Queries {
     type: count_distinct
