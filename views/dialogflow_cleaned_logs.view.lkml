@@ -100,7 +100,8 @@ view: dialogflow_cleaned_logs {
   }
   measure: Avg_sessions_day {
     type: number
-    sql: ${Total_Sessions}/${Date_count} ;;
+    sql: ${Total_Sessions}/${Date_count}
+        if(${Date_count} > 0, ${Total_Sessions}/${Date_count}, 0) ;;
     value_format: "0"
 
   }
