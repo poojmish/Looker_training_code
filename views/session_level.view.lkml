@@ -21,4 +21,23 @@ view: session_level {
     drill_fields: []
 
   }
+  dimension_group: date {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: yes
+    datatype: date
+    sql: ${TABLE}.date ;;
+  }
+  dimension: intent_triggered {
+    type: string
+    sql: ${TABLE}.intent_triggered ;;
+  }
+
 }
