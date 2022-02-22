@@ -8,7 +8,7 @@ view: dialogflow_cleaned_logs {
 
   dimension_group: date {
     type: time
-    sql: timeframes: [
+    timeframes: [
       raw,
       date,
       week,
@@ -16,7 +16,7 @@ view: dialogflow_cleaned_logs {
       quarter,
       year
     ]
-    convert_tz: no
+    convert_tz: yes
     datatype: date
     sql: ${TABLE}.date ;;
   }
