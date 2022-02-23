@@ -18,9 +18,7 @@ where A.intent_triggered != B.intent_triggered
     type:  string
   }
 
-  dimension: intent_triggered {
-    type:  string
-  }
+
 
   dimension: intent_list {
     type:  string
@@ -29,6 +27,24 @@ where A.intent_triggered != B.intent_triggered
   measure: count {
     type: count_distinct
     sql: ${session_id} ;;
+  }
+  dimension_group: date {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: yes
+    datatype: date
+    sql: ${TABLE}.date ;;
+  }
+  dimension: intent_triggered {
+    type: string
+    sql: ${TABLE}.intent_triggered ;;
   }
 
 }
