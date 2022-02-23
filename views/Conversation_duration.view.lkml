@@ -10,6 +10,24 @@ view: Conversation_duration {
       group by session_id)
       ;;
   }
+  dimension_group: date {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: yes
+    datatype: date
+    sql: ${TABLE}.date ;;
+  }
+  dimension: intent_triggered {
+    type: string
+    sql: ${TABLE}.intent_triggered ;;
+  }
 
   dimension: session_id {
     type: string
