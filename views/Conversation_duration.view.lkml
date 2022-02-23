@@ -3,7 +3,7 @@ view: Conversation_duration {
     sql:
       Select session_id, sentiment_score,
       start_time, end_time,
-      count_of_msg, session_date_time
+      count_of_msg, session_date_time,date,intent_triggered
       from
       (SELECT session_id, avg(sentiment_score) as sentiment_score, min( time_stamp ) as start_time, max( time_stamp ) as end_time, count(distinct response_ID) as count_of_msg, MIN( time_stamp ) as session_date_time
       FROM dialogflow_cleaned_logs
