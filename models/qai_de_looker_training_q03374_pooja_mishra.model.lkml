@@ -22,7 +22,7 @@ explore: dialogflow_cleaned_logs {
     type: full_outer
     relationship: one_to_many
     sql_on: dialogflow_cleaned_logs.session_id = Conversation_duration.session_id ;;
-    fields: [call_duration_bucket, session_id]
+    fields: [call_duration_bucket,Conversation_duration.date_date,intent_triggered, session_id]
   }
   join: intent_correlation {
     type: left_outer
@@ -37,24 +37,24 @@ explore: session_level {
     type: left_outer
     relationship: one_to_one
     sql_on: session_level.session_id = exit_intent.session_id ;;
-    fields: [exit_intent]
+    fields: [exit_intent,intent_triggered]
   }
   join: second_last_intent {
     type: left_outer
     relationship: one_to_one
     sql_on: session_level.session_id = second_last_intent.session_id ;;
-    fields: [second_last_intent]
+    fields: [second_last_intent,second_last_intent.date_date,intent_triggered]
   }
   join: Conversation_duration {
     type: left_outer
     relationship: one_to_one
     sql_on: session_level.session_id = Conversation_duration.session_id ;;
-    fields: [avg_session_duration,hour_frame]
+    fields: [avg_session_duration,Conversation_duration.date_date,intent_triggered,hour_frame]
   }
   join: Deflection_logic {
     type: left_outer
     relationship: one_to_one
     sql_on: session_level.session_id = Deflection_logic.session_id ;;
-    fields: [Deflection,Deflection_rate]
+    fields: [Deflection,Deflection_logic.date_date,intent_triggered,Deflection_rate]
   }
   }
