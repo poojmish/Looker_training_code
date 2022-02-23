@@ -16,4 +16,22 @@ view: second_last_intent {
   dimension: second_last_intent {
     type: string
   }
+  dimension_group: date {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: yes
+    datatype: date
+    sql: ${TABLE}.date ;;
+  }
+  dimension: intent_triggered {
+    type: string
+    sql: ${TABLE}.intent_triggered ;;
+  }
 }
